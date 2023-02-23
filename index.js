@@ -4,7 +4,7 @@ const axios = require('axios');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
-
+const path = require('path');
 app.use(cors());
 dotenv.config();
 
@@ -17,16 +17,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: true }));
-if (process.env.NODE_ENV == "production") {
-    console.log("In production stage");
-    app.use(express.static("./client/build"));
-    app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-    });
-}
-
-
-// get all mails
 app.get('/apirefreshmails', (req, res) => {
     const APIKEY = process.env.API_KEY;
     const NAMESPACE = process.env.NAMESPACE;
@@ -40,6 +30,15 @@ app.get('/apirefreshmails', (req, res) => {
             res.send(error);
         });
 });
+if (process.env.NODE_ENV == "production") {
+    console.log("In production stage");
+    app.use(express.static("./client/build"));
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    });
+}
+
+
 
 
 
