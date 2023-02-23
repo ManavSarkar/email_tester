@@ -19,7 +19,7 @@ function App() {
     setEmailHTML(emails[id]['html']);
   }
   useEffect(() => {
-    // getEmails();
+    getEmails();
   }, []);
 
   return (
