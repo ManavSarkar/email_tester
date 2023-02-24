@@ -27,19 +27,21 @@ app.get('/apirefreshmails', (req, res) => {
             res.send(error);
         });
 });
-console.log("In production stage");
-app.use(express.static("./client/build"));
-app.get("/", (req, res) => {
-    app.use(express.static(path.join(__dirname, "client", "build")));
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+if (process.env.NODE_ENV === "production") {
 
+    console.log("In production stage");
+    app.use(express.static("./client/build"));
+    app.get("/", (req, res) => {
+        app.use(express.static(path.join(__dirname, "client", "build")));
+        res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    });
+}
 
 
 
 
 
 app.listen(port, () => {
-    console.log('Listening on port 3000');
+    console.log(`Server started on port ${port}`);
 }
 );

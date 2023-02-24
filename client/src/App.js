@@ -46,7 +46,7 @@ function App() {
           </ul>
 
         </div>
-        <div className='row-span-2 bg-red-300 w-3/4 h-full fixed left-1/4'>
+        <div className='row-span-2 bg-red-300 w-3/4 h-full fixed left-1/4 overflow-auto'>
           <p className='text text-xl p-4 font-bold'>Emails</p>
 
           <div dangerouslySetInnerHTML={{ __html: emailHTML }} />
