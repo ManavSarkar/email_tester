@@ -27,7 +27,7 @@ app.get('/apirefreshmails', (req, res) => {
             res.send(error);
         });
 });
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "production") {
 
     console.log("In production stage");
     app.use(express.static("./client/build"));
