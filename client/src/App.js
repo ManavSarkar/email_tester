@@ -27,9 +27,10 @@ function App() {
       <Navbar getEmails={getEmails} />
 
       <div className='flex flex-auto grid-flow-col'>
-        <div className='row-span-1 bg-slate-400 w-1/4 h-full fixed'>
+        <div className='row-span-1 bg-slate-500 w-1/4 h-full fixed left-0 overflow-auto'>
           <p className='text text-xl p-4 font-bold'>Email IDs</p>
-          <ul className='list-none list-inside'>
+
+          <ul className='list-none list-inside overflow-auto'>
             {Object.keys(emails).map((key) => {
               return <li key={key}>
                 <div onClick={() => displayEmail(key)}>
@@ -44,7 +45,7 @@ function App() {
               </li>
             })}
           </ul>
-
+          <div style={{ height: '100px', width: "100%" }}></div>
         </div>
         <div className='row-span-2 bg-red-300 w-3/4 h-full fixed left-1/4 overflow-auto'>
           <p className='text text-xl p-4 font-bold'>Emails</p>
